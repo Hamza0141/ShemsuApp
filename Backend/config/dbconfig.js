@@ -9,11 +9,12 @@ const pool = mysql.createPool({
 });
 
 let employee = `CREATE TABLE IF NOT EXISTS employee(
-    user_id INT AUTO_INCREMENT,
-    user_name VARCHAR(255) NOT NULL,
-    user_email VARCHAR(255) NOT NULL,
-    user_password VARCHAR(255) NOT NULL,
-    PRIMARY KEY (user_id)
+    employee_id INT AUTO_INCREMENT,
+    employee_first_name VARCHAR(255) NOT NULL,
+    employee_last_name VARCHAR(255) NOT NULL,
+    employee_email VARCHAR(255) NOT NULL,
+    employee_password_hashed VARCHAR(255) NOT NULL,
+    PRIMARY KEY (employee_id)
 )`;
 
 let inventory = `CREATE TABLE IF NOT EXISTS inventory(

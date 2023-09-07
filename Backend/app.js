@@ -9,6 +9,7 @@ const salesrouter = require("./routes/sales.route")
 const statementrouter = require("./routes/statement.route")
 const receivablerouter = require("./routes/receivable.route");
 const updateReceivables = require("./routes/updatereceivable.route")
+const loginRoute = require("./routes/Login.route")
 
 const app = express();
 const port = process.env.PORT;
@@ -31,6 +32,7 @@ app.use(salesrouter);
 app.use(statementrouter);
 app.use(receivablerouter);
 app.use(updateReceivables);
+app.use(loginRoute);
 
 
 

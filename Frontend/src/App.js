@@ -1,4 +1,5 @@
 import React from "react";
+import Login from "./Pages/Login/Login";
 import AddEmployee from "./Pages/AddEmployee/AddEmployee";
 import AddInventory from "./Pages/AddInventory/AddInventory";
 import InventoryList from "./Pages/Inventory/InventoryList";
@@ -15,8 +16,9 @@ function App() {
   return (
     <div>
       <>
-        <Home />
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/AddEmployee" element={<AddEmployee />} />
           <Route path="/addinventory" element={<AddInventory />} />
           <Route path="/InventoryList" element={<InventoryList />} />

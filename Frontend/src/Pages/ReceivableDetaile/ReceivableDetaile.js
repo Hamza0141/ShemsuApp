@@ -39,7 +39,7 @@ function ReceivableDetaile() {
   const handleUpdateTransaction = () => {
       if (
         transaction.remaining_balance < partialAmount ||
-        transaction.transaction < partialAmount
+        partialAmount < 0
       ) {
         setpaymentError(
           "partial payment has to be less or equal to amount owed"
@@ -47,32 +47,34 @@ function ReceivableDetaile() {
         return;
       }
 
+     let updatedRemainingBalance = transaction.remaining_balance;
+     let updatedPaymentType = paymentType; // Create a variable to track the updated paymentType
 
+     if (paymentType === "partially-paied" && partialAmount !== "") {
+       updatedRemainingBalance -= partialAmount;
+     } else if (paymentType === "paied") {
+       updatedRemainingBalance = 0;
+       updatedPaymentType = "paied"; // Update the paymentType to "paied"
+     }
 
-
-    let updatedRemainingBalance = transaction.remaining_balance;
-    if (paymentType === "partially-paied" && partialAmount !== "") {
-      updatedRemainingBalance -= partialAmount;
-    } else if (paymentType === "paied") {
-      updatedRemainingBalance = 0;
-    }
+     // Update the paymentType state
+     setPaymentType(updatedPaymentType);
 
     // Prepare the data to send to the server
     const dataToUpdate = {
       payment_type: paymentType,
       remaining_balance: updatedRemainingBalance,
     };
-
-    axios
-      .put(`http://localhost:4000/update-receivable/${id}`, dataToUpdate)
-      .then((response) => {
-        if (response.status === 200) {
-          navigate("/Receivable");
-        }
-      })
-      .catch((error) => {
-        console.error("Error updating transaction:", error);
-      });
+      axios
+        .put(`http://localhost:4000/update-receivable/${id}`, dataToUpdate)
+        .then((response) => {
+          if (response.status === 200) {
+            navigate("/Receivable");
+          }
+        })
+        .catch((error) => {
+          console.error("Error updating transaction:", error);
+        });
 
   };
   return (

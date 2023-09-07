@@ -1,54 +1,51 @@
-import React from 'react'
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Home.css"
+import "./Home.css";
 
 function Home() {
   const navigate = useNavigate();
-  const handleEmployee = (e) => {
+
+  const handleNavigation = (e, path) => {
     e.preventDefault();
-    navigate("/addemployee");
+    navigate(path);
   };
-  const handleinventory = (e) => {
-    e.preventDefault();
-    navigate("/addinventory");
-  };
-  const listInve = (e) => {
-    e.preventDefault();
-    navigate("/InventoryList");
-  };
-   const handeleStatement = (e) => {
-     e.preventDefault();
-     navigate("/Statement");
-   };
-      const handleReceivable = (e) => {
-        e.preventDefault();
-        navigate("/Receivable");
-      };
-   ;
-  const Return = (e) => {
-    navigate("/");
-  };
+
   return (
     <div>
       <h1>Home</h1>
-      <h2>Welcome to shemsu Mrt </h2>
+      <h2>Welcome to shemsu Mrt</h2>
       <div className="button-container">
-        <button className="button" onClick={handleEmployee}>
+        <button
+          className="button"
+          onClick={(e) => handleNavigation(e, "/addemployee")}
+        >
           Add Employee
         </button>
-        <button className="button" onClick={handleinventory}>
-          Add inventory
+        <button
+          className="button"
+          onClick={(e) => handleNavigation(e, "/addinventory")}
+        >
+          Add Inventory
         </button>
-        <button className="button" onClick={listInve}>
-          avilable inventory
+        <button
+          className="button"
+          onClick={(e) => handleNavigation(e, "/InventoryList")}
+        >
+          Available Inventory
         </button>
-        <button className="button" onClick={handeleStatement}>
+        <button
+          className="button"
+          onClick={(e) => handleNavigation(e, "/Statement")}
+        >
           Statement
         </button>
-        <button className="button" onClick={handleReceivable}>
+        <button
+          className="button"
+          onClick={(e) => handleNavigation(e, "/Receivable")}
+        >
           Receivable
         </button>
-        <button className="button" onClick={Return}>
+        <button className="button" onClick={(e) => handleNavigation(e, "/")}>
           Return
         </button>
       </div>
@@ -56,4 +53,4 @@ function Home() {
   );
 }
 
-export default Home
+export default Home;

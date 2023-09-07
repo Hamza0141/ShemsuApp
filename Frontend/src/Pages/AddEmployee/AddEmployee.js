@@ -4,9 +4,10 @@ import "./AddEmployee.css";
 
 const AddEmployee = () => {
   const [userData, setUserData] = useState({
-    user_name: "",
-    user_email: "",
-    user_password: "",
+    employee_first_name: "",
+    employee_last_name: "",
+    employee_email: "",
+    employee_password: "",
   });
     const navigate = useNavigate();
   console.log(userData);
@@ -34,7 +35,7 @@ const AddEmployee = () => {
 alert("User registered successfully! ");
 navigate("/")
       } else {
-        // Handle error if the response status is not ok
+alert("email address is already associated! ");
         console.error("Failed to register user.");
       }
     } catch (error) {
@@ -47,11 +48,21 @@ navigate("/")
       <h2>Add Employee</h2>
       <form className="user-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Employee Name:</label>
+          <label>Employee First Name:</label>
           <input
             type="text"
-            name="user_name"
-            value={userData.user_name}
+            name="employee_first_name"
+            value={userData.employee_first_name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Employee Last Name:</label>
+          <input
+            type="text"
+            name="employee_last_name"
+            value={userData.employee_last_name}
             onChange={handleChange}
             required
           />
@@ -60,8 +71,8 @@ navigate("/")
           <label>Employee Email:</label>
           <input
             type="email"
-            name="user_email"
-            value={userData.user_email}
+            name="employee_email"
+            value={userData.employee_email}
             onChange={handleChange}
             required
           />
@@ -70,8 +81,8 @@ navigate("/")
           <label>Password:</label>
           <input
             type="password"
-            name="user_password"
-            value={userData.user_password}
+            name="employee_password"
+            value={userData.employee_password}
             onChange={handleChange}
             required
           />
